@@ -1,47 +1,143 @@
-# Federated Learning for Intrusion Detection System
+# CollabIDS: Federated Learning for Intrusion Detection System
 
 ## Overview
-This project utilizes the power of Federated Learning to create an Intrusion Detection System. It employs the Flower framework ([GitHub - adap/flower](https://github.com/adap/flower)) for federated learning and the [UNSW_NB15 dataset](https://research.unsw.edu.au/projects/unsw-nb15-dataset) for intrusion detection. The core of this system is a Neural Network (NN) model.
+CollabIDS is a sophisticated Intrusion Detection System that leverages the power of Federated Learning to create a collaborative, privacy-preserving network security solution. Built using the Flower framework and trained on the UNSW_NB15 dataset, this system enables multiple organizations to collaboratively train an IDS model without sharing their sensitive network data.
+
+## Architecture
+
+### System Components
+1. **Server Component** (`server.py`)
+   - Coordinates the federated learning process
+   - Aggregates model updates from clients using FedAvg strategy
+   - Manages training rounds and client synchronization
+   - Tracks and reports global model performance
+
+2. **Client Component** (`client.py`)
+   - Handles local model training
+   - Processes local dataset
+   - Communicates with the central server
+   - Implements model evaluation on local data
+
+3. **Data Processing** (`loader.py`)
+   - Manages UNSW_NB15 dataset preprocessing
+   - Handles feature engineering and normalization
+   - Splits data for training and testing
+
+4. **Visualization** (`plot.py`)
+   - Generates model architecture visualizations
+   - Creates performance metrics plots
+   - Provides insights into training progress
+
+### Workflow
+1. **Initialization Phase**
+   - Server starts and waits for client connections
+   - Clients initialize with local datasets
+   - Initial model architecture is distributed
+
+2. **Training Phase**
+   - Server orchestrates training rounds
+   - Each client trains on local data
+   - Model updates are aggregated using FedAvg
+   - Progress is tracked and logged
+
+3. **Evaluation Phase**
+   - Global model is evaluated on each client
+   - Performance metrics are aggregated
+   - Results are stored and visualized
 
 ## Setup & Installation
-To get the project up and running, follow these steps:
-1. Download the UNSW_NB15 dataset.
-2. Place the `UNSW_NB15_training-set.csv` and `UNSW_NB15_testing-set.csv` files in the project's data folder.
 
-## Simulation
-There are 3 options to execute simulation:
+### Prerequisites
+- Python 3.7+
+- TensorFlow 2.x
+- Flower framework
+- UNSW_NB15 dataset
 
-1. Manually
-    - To initiate the server, use the command:
-        ```shell
-        python server.py
-        ```
-    - To launch the clients, execute the following command for each client:
-        ```shell
-        python client.py
-        ```
-    **Note:** To accurately simulate the project, at least three clients are needed to satisfy the `min_fit_clients`, `min_evaluate_clients`, and `min_available_clients` configuration.
-    
-    **Note:** The server uses port 8080 as default. If you want to run it on a different port, you may need to change it in both `client.py` and `server.py`.
+### Dataset Setup
+1. Download the UNSW_NB15 dataset from [UNSW_NB15 dataset](https://research.unsw.edu.au/projects/unsw-nb15-dataset)
+2. Place the following files in the `data/` directory:
+   - `UNSW_NB15_training-set.csv`
+   - `UNSW_NB15_testing-set.csv`
 
-2. Using the `simulation.py` script
-    - To run the simulation, use the command:
-        ```shell
-        python simulation.py
-        ```
+### Installation Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/[username]/CollabIDS.git
+   cd CollabIDS
+   ```
 
-3. Containerized simulation by running the Docker compose command
-    - To run the simulation, use the command:
-        ```shell
-        docker-compose up --build
-        ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Also you can visualize the model's architecture by generating a plot
+## Execution Options
 
-- To visualize the model's structure, use:
-    ```shell
-    python utils/plot.py
-    ```
+### 1. Manual Execution
+```bash
+# Start the server
+python server.py
+
+# Start clients (run in separate terminals)
+python client.py  # Run at least 3 instances
+```
+
+### 2. Automated Simulation
+```bash
+python simulation.py
+```
+
+### 3. Containerized Deployment
+```bash
+docker-compose up --build
+```
+
+## Model Visualization
+Generate a visual representation of the model architecture:
+```bash
+python plot.py
+```
+
+## Configuration
+
+### Server Configuration
+- Default port: 8080
+- Minimum clients required: 3
+- Training rounds: 5 (configurable)
+- Aggregation strategy: Federated Averaging (FedAvg)
+
+### Client Configuration
+- Batch size: 32
+- Local epochs: 5
+- Learning rate: 0.001
+- Model architecture: Neural Network with multiple dense layers
+
+## Project Structure
+```
+CollabIDS/
+├── client.py           # Client implementation
+├── server.py           # Server implementation
+├── loader.py           # Data loading and preprocessing
+├── plot.py            # Visualization utilities
+├── simulation.py      # Automated simulation
+├── requirements.txt   # Project dependencies
+├── data/             # Dataset directory
+└── pages/            # Web interface pages
+```
 
 ## Future Enhancements
-- Personalize datasets for each client instead of using a common sampled dataset.
+- [ ] Implement personalized datasets for each client
+- [ ] Add support for dynamic client joining/leaving
+- [ ] Enhance privacy mechanisms
+- [ ] Implement more advanced aggregation strategies
+- [ ] Add real-time threat detection capabilities
+
+## Contributing
+Contributions are welcome! Please feel free to submit pull requests.
+
+## License
+[MIT License](LICENSE)
+
+## Acknowledgments
+- [Flower Framework](https://github.com/adap/flower) for federated learning capabilities
+- [UNSW_NB15 Dataset](https://research.unsw.edu.au/projects/unsw-nb15-dataset) for providing the training data
