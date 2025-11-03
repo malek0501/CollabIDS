@@ -1,7 +1,16 @@
-# CollabIDS: Federated Learning for Intrusion Detection System
+# CollabIDS: Federated Learning for Intrusion Detection System with Interactive Web Dashboard
 
 ## Overview
-CollabIDS is a sophisticated Intrusion Detection System that leverages the power of Federated Learning to create a collaborative, privacy-preserving network security solution. Built using the Flower framework and trained on the UNSW_NB15 dataset, this system enables multiple organizations to collaboratively train an IDS model without sharing their sensitive network data.
+CollabIDS is a comprehensive Intrusion Detection System that combines the power of Federated Learning with an intuitive web-based interface. This system enables collaborative, privacy-preserving network security solutions through the Flower framework and UNSW_NB15 dataset, while providing real-time attack prediction and monitoring capabilities through a modern Streamlit dashboard.
+
+## 🌟 Key Features
+- **🔐 Federated Learning**: Privacy-preserving distributed training across multiple organizations
+- **🖥️ Interactive Web Dashboard**: Modern Streamlit-based interface for model management
+- **🔍 Real-time Attack Prediction**: Upload and analyze network traffic data instantly
+- **📊 Performance Monitoring**: Comprehensive metrics and visualization tools
+- **🎯 Model Selection**: Support for multiple ML architectures (RNN, CNN, DNN)
+- **📈 Data Visualization**: Advanced plotting and analysis capabilities
+- **🛡️ Security-First Design**: Enterprise-grade privacy and security features
 
 ## Architecture
 
@@ -33,47 +42,67 @@ CollabIDS is a sophisticated Intrusion Detection System that leverages the power
 
 ### System Components
 
-#### 1. **Server Component** (`server.py`)
-- **Role**: Central coordinator for the federated learning process
+#### 1. **Web Dashboard** (`src/streamlit_app.py`)
+- **Role**: Main entry point with secure authentication
 - **Key Features**:
-  - Implements Federated Averaging (FedAvg) aggregation strategy
-  - Manages client connections and synchronization
-  - Enforces minimum client requirements (3 clients minimum)
-  - Tracks training metrics across rounds
-  - Provides weighted averaging of client metrics
-- **Configuration**:
-  - Port: 8080 (configurable)
-  - Training rounds: 5 (default)
-  - Minimum clients: 3 for fit/evaluate/available
+  - Modern cybersecurity-themed UI
+  - Secure login system (Admin/Admin)
+  - Background security imagery
+  - Navigation to prediction system
+- **Technologies**: Streamlit, HTML/CSS styling
 
-#### 2. **Client Component** (`client.py`)
-- **Role**: Distributed training nodes that process local data
-- **Architecture**: Extends `fl.client.NumPyClient`
-- **Key Functions**:
-  - `get_parameters()`: Retrieves current model weights
-  - `fit()`: Performs local training on private dataset
-  - `evaluate()`: Evaluates global model on local test data
-- **Local Training**:
-  - Batch size: 64
-  - Epochs per round: 1
-  - Optimizer: Adam with learning rate 0.01
+#### 2. **Interactive Pages** (`pages/`)
+- **Page 1** (`page1.py`): **Model Selection**
+  - Choose between RNN, CNN, DNN architectures
+  - Detailed model descriptions and use cases
+  - Save and proceed functionality
+- **Page 2** (`page2.py`): **Data Input**
+  - Dataset upload and validation
+  - Data preview and preprocessing
+- **Page 3** (`page3.py`): **Model Training Control**
+  - Training parameter configuration
+  - Real-time training monitoring
+- **Page 4** (`page4.py`): **Performance Metrics**
+  - Accuracy, loss, and convergence analysis
+  - Model comparison tools
+- **Page 5** (`page5.py`): **Logs and Reports**
+  - Training logs and audit trails
+  - Comprehensive reporting system
+- **Page 6** (`page6.py`): **Data Visualization**
+  - Interactive charts and graphs
+  - Feature analysis and correlation plots
+- **Page 7** (`page7.py`): **Attack Prediction**
+  - Real-time attack classification
+  - Threat assessment dashboard
 
-#### 3. **Data Processing Module** (`loader.py`)
-- **DataLoader Class**:
-  - Loads UNSW_NB15 training and testing datasets
-  - Handles categorical encoding using LabelEncoder
-  - Applies Min-Max normalization to numerical features
-  - Removes irrelevant columns (`id`, `attack_cat`)
-  - Separates features (X) from labels (Y)
-- **ModelLoader Class**:
-  - Creates neural network architecture
-  - Input layer: Variable size based on dataset features
-  - Hidden layers: Dense(100) → LayerNorm → Dense(50) → LayerNorm
-  - Output layer: Dense(1) with sigmoid activation for binary classification
-  - Loss function: Binary crossentropy
-  - Metrics: Binary accuracy
+#### 3. **Prediction Engine** (`pages/predict.py`)
+- **Role**: Core prediction functionality for uploaded data
+- **Key Features**:
+  - CSV file upload and validation (42 features expected)
+  - Real-time preprocessing (encoding + normalization)
+  - Global model loading and prediction
+  - Color-coded results (✅ Benign / 🚨 Attack)
+  - Comprehensive model information sidebar
+- **Output**: Attack/Benign classification with confidence scores
 
-#### 4. **Neural Network Architecture**
+#### 4. **Federated Learning Core** (`src/`)
+- **Server Component** (`src/server.py`)
+  - Central coordinator for federated learning process
+  - FedAvg aggregation strategy implementation
+  - Minimum 3 clients requirement
+  - Weighted averaging of client metrics
+  
+- **Client Component** (`src/client.py`)
+  - Distributed training nodes
+  - Local data processing and model training
+  - Secure communication with server
+  
+- **Data Processing** (`src/loader.py`)
+  - UNSW_NB15 dataset management
+  - Feature encoding and normalization
+  - Train/test data splitting
+
+#### 5. **Model Architecture Support**
 ```
 Input Layer (42 features from UNSW_NB15)
     ↓
@@ -170,57 +199,181 @@ def evaluate(self, parameters, config):
 - **Serialization**: NumPy arrays for model weights
 - **Network**: TCP/IP over configurable ports
 
+## 🌐 Web Dashboard Features
+
+### 🔐 Authentication System
+- **Secure Login**: Username/Password authentication
+- **Session Management**: Persistent login sessions
+- **Access Control**: Protected pages and navigation
+
+### 📱 Interactive Interface
+- **Modern UI**: Cybersecurity-themed design with dark mode
+- **Responsive Layout**: Works on desktop and mobile devices
+- **Real-time Updates**: Live model training and prediction results
+- **Background Images**: Professional cybersecurity aesthetics
+
+### 🎯 Prediction Workflow
+1. **Upload CSV**: Drag and drop or browse for network traffic data
+2. **Data Validation**: Automatic check for 42 required features
+3. **Preprocessing**: Automatic encoding and normalization
+4. **Model Inference**: Real-time prediction using trained global model
+5. **Results Display**: Color-coded attack/benign classifications
+6. **Download Reports**: Export prediction results
+
+### 📊 Dashboard Pages Overview
+
+#### **Model Selection Page**
+- **RNN**: For sequential network traffic analysis
+- **CNN**: For pattern recognition in network packets  
+- **DNN**: For general-purpose intrusion detection
+- **Interactive Descriptions**: Detailed explanations for each model type
+
+#### **Data Input Page**
+- **File Upload**: Support for CSV datasets
+- **Data Preview**: Interactive data table with filtering
+- **Validation**: Real-time data quality checks
+- **Format Guidance**: Clear instructions for data preparation
+
+#### **Training Control Page**
+- **Parameter Tuning**: Adjust learning rates, epochs, batch sizes
+- **Progress Monitoring**: Real-time training progress bars
+- **Client Status**: Live view of connected federated clients
+- **Training Logs**: Detailed training history and metrics
+
+#### **Performance Metrics Page**
+- **Accuracy Tracking**: Global and per-client accuracy metrics
+- **Loss Visualization**: Training and validation loss curves
+- **Convergence Analysis**: Model convergence speed and stability
+- **Comparison Tools**: Compare different model architectures
+
+#### **Logs and Reports Page**
+- **Training Logs**: Complete audit trail of all training activities
+- **Error Reports**: Debugging information and error tracking
+- **Export Options**: Download logs in various formats
+- **Search and Filter**: Find specific events or time periods
+
+#### **Data Visualization Page**
+- **Feature Analysis**: Interactive correlation matrices
+- **Attack Distribution**: Visual breakdown of attack types
+- **Training Progress**: Multi-dimensional performance plots
+- **Custom Charts**: Create custom visualizations
+
+#### **Attack Prediction Page**
+- **Real-time Classification**: Instant attack/benign prediction
+- **Confidence Scores**: Model confidence for each prediction
+- **Batch Processing**: Handle multiple samples simultaneously
+- **Alert System**: Visual and audio alerts for detected attacks
+
 ## Setup & Installation
 
 ### Prerequisites
-- Python 3.7+
-- TensorFlow 2.x
-- Flower framework
+- Python 3.8+
+- TensorFlow 2.15.0
+- Flower framework 1.6.0
+- Streamlit (latest)
 - UNSW_NB15 dataset
 
-### Dataset Setup
-1. Download the UNSW_NB15 dataset from [UNSW_NB15 dataset](https://research.unsw.edu.au/projects/unsw-nb15-dataset)
-2. Place the following files in the `data/` directory:
-   - `UNSW_NB15_training-set.csv`
-   - `UNSW_NB15_testing-set.csv`
+### Quick Start Guide
 
-### Installation Steps
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/malek0501/CollabIDS.git
-   cd CollabIDS
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Execution Options
-
-### 1. Manual Execution
+#### 1. Clone and Setup
 ```bash
-# Start the server
-python server.py
+git clone https://github.com/malek0501/CollabIDS.git
+cd CollabIDS
 
-# Start clients (run in separate terminals)
-python client.py  # Run at least 3 instances
+# Install core dependencies
+pip install -r src/requirements.txt
+
+# Install additional web dependencies
+pip install streamlit streamlit-extras pillow
 ```
 
-### 2. Automated Simulation
+#### 2. Dataset Preparation
 ```bash
+# Download UNSW_NB15 dataset from: https://research.unsw.edu.au/projects/unsw-nb15-dataset
+# Place files in data/ directory:
+mkdir -p data/
+# Copy UNSW_NB15_training-set.csv and UNSW_NB15_testing-set.csv to data/
+```
+
+#### 3. Launch Web Dashboard
+```bash
+# Start the main web application
+streamlit run src/streamlit_app.py
+
+# Default login credentials:
+# Username: Admin
+# Password: Admin
+```
+
+#### 4. Alternative: Command Line Usage
+```bash
+# Traditional federated learning mode
+cd src/
+
+# Start server
+python server.py
+
+# Start clients (in separate terminals)
+python client.py  # Run at least 3 instances
+
+# Or run simulation
 python simulation.py
 ```
 
-### 3. Containerized Deployment
+## Execution Options
+
+### 1. 🖥️ Web Dashboard (Recommended)
+```bash
+# Launch interactive web interface
+streamlit run src/streamlit_app.py
+
+# Access at: http://localhost:8501
+# Login: Admin / Admin
+```
+**Features:**
+- **Model Selection**: Choose RNN, CNN, or DNN architectures
+- **Data Management**: Upload and process datasets
+- **Training Control**: Monitor and control federated learning
+- **Real-time Prediction**: Upload CSV files for instant attack detection
+- **Visualization**: Interactive plots and performance metrics
+
+### 2. 🔍 Prediction Mode
+```bash
+# Direct prediction interface
+streamlit run pages/predict.py
+```
+Upload CSV files with 42 features for real-time attack classification.
+
+### 3. ⚙️ Federated Learning (CLI)
+```bash
+cd src/
+
+# Start server
+python server.py
+
+# Start clients (separate terminals)
+python client.py  # Minimum 3 clients required
+```
+
+### 4. 🤖 Automated Simulation
+```bash
+cd src/
+python simulation.py
+```
+
+### 5. 🐳 Containerized Deployment
 ```bash
 docker-compose up --build
 ```
 
-## Model Visualization
-Generate a visual representation of the model architecture:
+## 📊 Model Visualization & Analysis
 ```bash
+# Generate model architecture plots
+cd src/
 python plot.py
+
+# Results saved to: imagesplot/
+# Metrics saved to: metrics_comparison/
 ```
 
 ## Performance Metrics & Monitoring
@@ -289,27 +442,84 @@ model = tf.keras.Sequential([
 ])
 ```
 
+### Web Application Configuration
+```bash
+# Streamlit configuration
+STREAMLIT_SERVER_PORT=8501       # Web dashboard port
+STREAMLIT_SERVER_ADDRESS=0.0.0.0 # Bind address
+
+# Authentication
+ADMIN_USERNAME=Admin             # Default admin username
+ADMIN_PASSWORD=Admin             # Default admin password
+
+# File paths
+GLOBAL_MODEL_PATH=global_model.h5    # Trained model location
+BACKGROUND_IMAGE=cyber.jpg           # Dashboard background
+```
+
 ### Environment Variables
 ```bash
-# Client configuration
-SERVER_ADDRESS=127.0.0.1:8080    # Server connection address
+# Federated Learning configuration
+SERVER_ADDRESS=127.0.0.1:8080    # FL server connection address
 TF_CPP_MIN_LOG_LEVEL=2           # Reduce TensorFlow verbosity
 
 # Docker configuration  
 COMPOSE_PROJECT_NAME=collabids   # Docker compose project name
+
+# Data directories
+DATA_DIR=./data                  # Dataset location
+MODEL_DIR=./model_checkpoints    # Model storage
+PLOTS_DIR=./imagesplot          # Visualization output
+```
+
+### Dependencies
+```bash
+# Core ML dependencies (src/requirements.txt)
+flwr==1.6.0                     # Federated learning framework
+pandas==2.1.4                   # Data manipulation
+scikit_learn==1.3.2             # Machine learning utilities
+tensorflow==2.15.0              # Deep learning framework
+
+# Web interface dependencies
+streamlit>=1.28.0               # Web framework
+streamlit-extras>=0.3.0         # Additional components
+pillow>=9.0.0                   # Image processing
+plotly>=5.0.0                   # Interactive plotting
 ```
 
 ## Project Structure
 ```
 CollabIDS/
-├── client.py           # Client implementation
-├── server.py           # Server implementation
-├── loader.py           # Data loading and preprocessing
-├── plot.py            # Visualization utilities
-├── simulation.py      # Automated simulation
-├── requirements.txt   # Project dependencies
-├── data/             # Dataset directory
-└── pages/            # Web interface pages
+├── src/                          # Core federated learning components
+│   ├── streamlit_app.py         # Main web application entry point
+│   ├── server.py                # Federated learning server
+│   ├── client.py                # Federated learning client
+│   ├── loader.py                # Data processing and model loading
+│   ├── simulation.py            # Automated FL simulation
+│   ├── plot.py                  # Model visualization utilities
+│   ├── navigation.py            # Web app navigation logic
+│   ├── summary.py               # Training summaries and reports
+│   ├── flp.py                   # Federated learning protocols
+│   └── requirements.txt         # Core dependencies
+├── pages/                        # Interactive web dashboard pages
+│   ├── page1.py                 # Model Selection interface
+│   ├── page2.py                 # Data Input management
+│   ├── page3.py                 # Training Control dashboard
+│   ├── page4.py                 # Performance Metrics viewer
+│   ├── page5.py                 # Logs and Reports system
+│   ├── page6.py                 # Data Visualization tools
+│   ├── page7.py                 # Attack Prediction interface
+│   └── predict.py               # Core prediction engine
+├── data/                         # Dataset and processing files
+│   ├── UNSW_NB15_training-set.csv
+│   ├── UNSW_NB15_testing-set.csv
+│   ├── Sampled_Data.csv         # Processed sample data
+│   └── *.txt                    # Processing logs
+├── model_checkpoints/            # Trained model storage
+├── metrics_comparison/           # Performance analysis results
+├── imagesplot/                   # Generated visualization plots
+├── .devcontainer/               # Development container config
+└── README.md                    # Project documentation
 ```
 
 ## Deployment Scenarios
@@ -355,16 +565,67 @@ services:
       - SERVER_ADDRESS=server:8080
 ```
 
-### 4. Edge Computing Deployment
+### 4. Web-Based Production Deployment
+```bash
+# Production web server
+streamlit run src/streamlit_app.py --server.port 80 --server.address 0.0.0.0
+
+# With SSL/TLS
+streamlit run src/streamlit_app.py --server.enableCORS false --server.enableXsrfProtection false
+```
+
+### 5. Edge Computing Deployment
 - Deploy clients on edge devices (IoT, routers, firewalls)
 - Central server in cloud or data center
+- Web dashboard for remote monitoring and control
 - Real-time intrusion detection at network edge
 
 ## Troubleshooting
 
 ### Common Issues
 
-#### 1. Connection Errors
+#### 1. Web Dashboard Issues
+**Problem**: `streamlit: command not found`
+```bash
+# Install streamlit
+pip install streamlit streamlit-extras
+
+# Verify installation
+streamlit --version
+```
+
+**Problem**: Dashboard not accessible
+```bash
+# Check if port 8501 is available
+netstat -tlnp | grep 8501
+
+# Run with different port
+streamlit run src/streamlit_app.py --server.port 8502
+```
+
+**Problem**: Background images not loading
+- Ensure `cyber.jpg` exists in the project root
+- Check file permissions: `chmod 644 cyber.jpg`
+- Verify image path in `streamlit_app.py`
+
+#### 2. Model Loading Issues
+**Problem**: `global_model.h5 not found`
+```bash
+# Train a model first using federated learning
+cd src/
+python simulation.py
+
+# Or copy pre-trained model to root directory
+cp model_checkpoints/global_model.h5 ./
+```
+
+#### 3. Prediction Errors
+**Problem**: `Expected 42 features, but received X`
+- Ensure uploaded CSV has exactly 42 feature columns
+- Remove `id`, `label`, and `attack_cat` columns before upload
+- Check feature names match UNSW_NB15 format
+
+#### 4. Connection Errors
 **Problem**: `Connection refused` or `Unable to connect to server`
 ```bash
 # Check server status
@@ -427,25 +688,46 @@ chmod 644 data/*.csv
 ## Future Enhancements
 
 ### Short-term Goals
-- [ ] Implement personalized datasets for each client
-- [ ] Add support for dynamic client joining/leaving  
-- [ ] Enhance privacy mechanisms with differential privacy
-- [ ] Implement model compression for faster communication
-- [ ] Add real-time monitoring dashboard
+- [ ] **Enhanced Authentication**: Multi-factor authentication and role-based access
+- [ ] **Real-time Monitoring**: Live federated learning progress tracking in web UI
+- [ ] **Batch Prediction**: Upload multiple files for bulk attack detection
+- [ ] **Model Comparison**: Side-by-side performance comparison in dashboard
+- [ ] **Export Features**: Download training reports and prediction results
+- [ ] **Mobile Optimization**: Responsive design improvements for mobile devices
 
 ### Medium-term Goals  
-- [ ] Support for more advanced aggregation strategies (FedProx, FedNova)
-- [ ] Integration with MLOps pipelines
-- [ ] Automated hyperparameter tuning
-- [ ] Multi-class intrusion detection
-- [ ] Real-time threat detection capabilities
+- [ ] **Advanced Web Features**: 
+  - Interactive model architecture editor
+  - Real-time collaboration tools for multiple users
+  - Advanced data visualization with 3D plots
+  - Automated report generation and scheduling
+- [ ] **Enhanced FL Capabilities**:
+  - Support for more aggregation strategies (FedProx, FedNova)
+  - Dynamic client joining/leaving via web interface
+  - Personalized datasets for each client
+  - Automated hyperparameter tuning through UI
+- [ ] **Integration & Deployment**:
+  - MLOps pipeline integration
+  - Docker containerization for web app
+  - Cloud deployment templates (AWS, Azure, GCP)
+  - API endpoints for external integration
 
 ### Long-term Vision
-- [ ] Integration with SIEM systems
-- [ ] Blockchain-based model verification
-- [ ] Quantum-resistant cryptographic protocols
-- [ ] Self-healing federated networks
-- [ ] AI-driven client selection strategies
+- [ ] **Enterprise Integration**:
+  - SIEM system integration with web hooks
+  - Enterprise SSO (LDAP, Active Directory)
+  - Multi-tenant architecture for organizations
+  - Advanced audit trails and compliance reporting
+- [ ] **AI-Powered Features**:
+  - AI-driven client selection strategies
+  - Automated threat intelligence integration
+  - Self-healing federated networks
+  - Predictive maintenance for model performance
+- [ ] **Security & Privacy**:
+  - Blockchain-based model verification
+  - Quantum-resistant cryptographic protocols
+  - Zero-knowledge proof implementations
+  - Homomorphic encryption for enhanced privacy
 
 ## Contributing
 Contributions are welcome! Please feel free to submit pull requests.

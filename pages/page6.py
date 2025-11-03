@@ -1,8 +1,8 @@
-from navigation import make_sidebar
+#from navigation import make_sidebar
 import streamlit as st
 import os
 
-make_sidebar()
+#make_sidebar()
 
 st.markdown("# Data Visualization")
 

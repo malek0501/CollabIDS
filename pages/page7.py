@@ -1,8 +1,8 @@
-from navigation import make_sidebar
+#from navigation import make_sidebar
 import streamlit as st
 import os
 
-make_sidebar()
+#make_sidebar()
 
 st.markdown("# Intrusion Detection")
 def predict_attack(numeric_features, http_service_used, successfully_logged_in):
@@ -27,7 +27,7 @@ def predict_attack(numeric_features, http_service_used, successfully_logged_in):
         return 'Malware Infection'
     elif (http_service_used == 'No' and successfully_logged_in == 0):
         return 'Brute Force Attack'
-    else:
+    else: 
         return 'Normal'
 
 def main():

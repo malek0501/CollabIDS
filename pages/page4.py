@@ -1,8 +1,8 @@
-from navigation import make_sidebar
+#from navigation import make_sidebar
 import streamlit as st
 from time import sleep
 
-make_sidebar()
+#make_sidebar()
 
 # Define the slow_text function
 def slow_text(text, delay=1):

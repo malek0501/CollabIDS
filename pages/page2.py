@@ -1,8 +1,9 @@
-from navigation import make_sidebar
+#from navigation import make_sidebar
+from streamlit_extras.switch_page_button import switch_page
 import streamlit as st
 from time import sleep
 
-make_sidebar()
+#make_sidebar()
 
 st.markdown("# Data Input")
         # Add data input components here
@@ -17,4 +18,4 @@ if uploaded_file1 and uploaded_file2:
         st.session_state.logged_in = True  # Assuming you have this session_state variable set elsewhere
         st.success("Training started!")
         sleep(0.5)
-        st.switch_page("pages/page3.py")
+        switch_page("page3")

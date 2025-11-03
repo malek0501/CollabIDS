@@ -1,7 +1,8 @@
-from navigation import make_sidebar
+#import navigation
 import streamlit as st
+from streamlit_extras.switch_page_button import switch_page
 
-make_sidebar()
+#navigation.make_sidebar()
 
 # Model descriptions
 model_descriptions = {
@@ -27,6 +28,7 @@ st.write(model_descriptions[selected_model])
 if st.button("Save", type="primary"):
     st.success("Model saved successfully!")
     st.write("Proceed to Data Input.")
+    switch_page("page2")
 
 else:
     st.error("Please select a model")

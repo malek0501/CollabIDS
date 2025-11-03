@@ -1,0 +1,201 @@
+Round 1 —  Accuracy : 0.7651
+Round 2 —  Accuracy : 0.7959
+Round 3 —  Accuracy : 0.7950
+Round 4 —  Accuracy : 0.7888
+Round 5 —  Accuracy : 0.7978
+Round 6 —  Accuracy : 0.7929
+Round 7 —  Accuracy : 0.7865
+Round 8 —  Accuracy : 0.7921
+Round 9 —  Accuracy : 0.7934
+Round 10 —  Accuracy : 0.8041
+Round 11 —  Accuracy : 0.8025
+Round 12 —  Accuracy : 0.8200
+Round 13 —  Accuracy : 0.7970
+Round 14 —  Accuracy : 0.7988
+Round 15 —  Accuracy : 0.8037
+Round 16 —  Accuracy : 0.8148
+Round 17 —  Accuracy : 0.8298
+Round 18 —  Accuracy : 0.8071
+Round 19 —  Accuracy : 0.8217
+Round 20 —  Accuracy : 0.8096
+Round 21 —  Accuracy : 0.8028
+Round 22 —  Accuracy : 0.8125
+Round 23 —  Accuracy : 0.8064
+Round 24 —  Accuracy : 0.7966
+Round 25 —  Accuracy : 0.8026
+Round 26 —  Accuracy : 0.8185
+Round 27 —  Accuracy : 0.8081
+Round 28 —  Accuracy : 0.8128
+Round 29 —  Accuracy : 0.8258
+Round 30 —  Accuracy : 0.8188
+Round 31 —  Accuracy : 0.8185
+Round 32 —  Accuracy : 0.8113
+Round 33 —  Accuracy : 0.8096
+Round 34 —  Accuracy : 0.8139
+Round 35 —  Accuracy : 0.8089
+Round 36 —  Accuracy : 0.8175
+Round 37 —  Accuracy : 0.8103
+Round 38 —  Accuracy : 0.8122
+Round 39 —  Accuracy : 0.8187
+Round 40 —  Accuracy : 0.8232
+Round 1 —  Precision: 0.7030
+Round 2 —  Precision: 0.7336
+Round 3 —  Precision: 0.7336
+Round 4 —  Precision: 0.7277
+Round 5 —  Precision: 0.7379
+Round 6 —  Precision: 0.7303
+Round 7 —  Precision: 0.7247
+Round 8 —  Precision: 0.7302
+Round 9 —  Precision: 0.7329
+Round 10 —  Precision: 0.7435
+Round 11 —  Precision: 0.7438
+Round 12 —  Precision: 0.7668
+Round 13 —  Precision: 0.7338
+Round 14 —  Precision: 0.7373
+Round 15 —  Precision: 0.7449
+Round 16 —  Precision: 0.7586
+Round 17 —  Precision: 0.7771
+Round 18 —  Precision: 0.7474
+Round 19 —  Precision: 0.7665
+Round 20 —  Precision: 0.7489
+Round 21 —  Precision: 0.7420
+Round 22 —  Precision: 0.7531
+Round 23 —  Precision: 0.7425
+Round 24 —  Precision: 0.7328
+Round 25 —  Precision: 0.7387
+Round 26 —  Precision: 0.7585
+Round 27 —  Precision: 0.7448
+Round 28 —  Precision: 0.7497
+Round 29 —  Precision: 0.7642
+Round 30 —  Precision: 0.7576
+Round 31 —  Precision: 0.7568
+Round 32 —  Precision: 0.7485
+Round 33 —  Precision: 0.7460
+Round 34 —  Precision: 0.7504
+Round 35 —  Precision: 0.7458
+Round 36 —  Precision: 0.7551
+Round 37 —  Precision: 0.7459
+Round 38 —  Precision: 0.7477
+Round 39 —  Precision: 0.7561
+Round 40 —  Precision: 0.7631
+Round 1 —  Recall   : 0.9931
+Round 2 —  Recall   : 0.9883
+Round 3 —  Recall   : 0.9854
+Round 4 —  Recall   : 0.9850
+Round 5 —  Recall   : 0.9813
+Round 6 —  Recall   : 0.9892
+Round 7 —  Recall   : 0.9874
+Round 8 —  Recall   : 0.9871
+Round 9 —  Recall   : 0.9831
+Round 10 —  Recall   : 0.9836
+Round 11 —  Recall   : 0.9782
+Round 12 —  Recall   : 0.9672
+Round 13 —  Recall   : 0.9909
+Round 14 —  Recall   : 0.9859
+Round 15 —  Recall   : 0.9787
+Round 16 —  Recall   : 0.9735
+Round 17 —  Recall   : 0.9689
+Round 18 —  Recall   : 0.9813
+Round 19 —  Recall   : 0.9725
+Round 20 —  Recall   : 0.9842
+Round 21 —  Recall   : 0.9841
+Round 22 —  Recall   : 0.9811
+Round 23 —  Recall   : 0.9929
+Round 24 —  Recall   : 0.9925
+Round 25 —  Recall   : 0.9924
+Round 26 —  Recall   : 0.9835
+Round 27 —  Recall   : 0.9910
+Round 28 —  Recall   : 0.9910
+Round 29 —  Recall   : 0.9888
+Round 30 —  Recall   : 0.9865
+Round 31 —  Recall   : 0.9878
+Round 32 —  Recall   : 0.9899
+Round 33 —  Recall   : 0.9921
+Round 34 —  Recall   : 0.9917
+Round 35 —  Recall   : 0.9905
+Round 36 —  Recall   : 0.9893
+Round 37 —  Recall   : 0.9942
+Round 38 —  Recall   : 0.9945
+Round 39 —  Recall   : 0.9901
+Round 40 —  Recall   : 0.9846
+Round 1 —  F1       : 0.8232
+Round 2 —  F1       : 0.8421
+Round 3 —  F1       : 0.8411
+Round 4 —  F1       : 0.8370
+Round 5 —  F1       : 0.8424
+Round 6 —  F1       : 0.8402
+Round 7 —  F1       : 0.8359
+Round 8 —  F1       : 0.8395
+Round 9 —  F1       : 0.8397
+Round 10 —  F1       : 0.8468
+Round 11 —  F1       : 0.8451
+Round 12 —  F1       : 0.8554
+Round 13 —  F1       : 0.8432
+Round 14 —  F1       : 0.8436
+Round 15 —  F1       : 0.8459
+Round 16 —  F1       : 0.8527
+Round 17 —  F1       : 0.8625
+Round 18 —  F1       : 0.8485
+Round 19 —  F1       : 0.8573
+Round 20 —  F1       : 0.8506
+Round 21 —  F1       : 0.8461
+Round 22 —  F1       : 0.8521
+Round 23 —  F1       : 0.8496
+Round 24 —  F1       : 0.8431
+Round 25 —  F1       : 0.8470
+Round 26 —  F1       : 0.8565
+Round 27 —  F1       : 0.8504
+Round 28 —  F1       : 0.8536
+Round 29 —  F1       : 0.8621
+Round 30 —  F1       : 0.8571
+Round 31 —  F1       : 0.8570
+Round 32 —  F1       : 0.8524
+Round 33 —  F1       : 0.8516
+Round 34 —  F1       : 0.8544
+Round 35 —  F1       : 0.8509
+Round 36 —  F1       : 0.8565
+Round 37 —  F1       : 0.8523
+Round 38 —  F1       : 0.8536
+Round 39 —  F1       : 0.8574
+Round 40 —  F1       : 0.8598
+Round 1 —  Loss     : 0.6504
+Round 2 —  Loss     : 0.4746
+Round 3 —  Loss     : 0.4894
+Round 4 —  Loss     : 0.4975
+Round 5 —  Loss     : 0.4935
+Round 6 —  Loss     : 0.5223
+Round 7 —  Loss     : 0.5913
+Round 8 —  Loss     : 0.4706
+Round 9 —  Loss     : 0.5436
+Round 10 —  Loss     : 0.4256
+Round 11 —  Loss     : 0.5186
+Round 12 —  Loss     : 0.4290
+Round 13 —  Loss     : 0.4966
+Round 14 —  Loss     : 0.4918
+Round 15 —  Loss     : 0.4960
+Round 16 —  Loss     : 0.4313
+Round 17 —  Loss     : 0.3803
+Round 18 —  Loss     : 0.5462
+Round 19 —  Loss     : 0.4200
+Round 20 —  Loss     : 0.4544
+Round 21 —  Loss     : 0.4855
+Round 22 —  Loss     : 0.3654
+Round 23 —  Loss     : 0.4356
+Round 24 —  Loss     : 0.4653
+Round 25 —  Loss     : 0.4665
+Round 26 —  Loss     : 0.4051
+Round 27 —  Loss     : 0.4138
+Round 28 —  Loss     : 0.4024
+Round 29 —  Loss     : 0.4038
+Round 30 —  Loss     : 0.4391
+Round 31 —  Loss     : 0.4139
+Round 32 —  Loss     : 0.4113
+Round 33 —  Loss     : 0.4471
+Round 34 —  Loss     : 0.4408
+Round 35 —  Loss     : 0.4219
+Round 36 —  Loss     : 0.4076
+Round 37 —  Loss     : 0.4442
+Round 38 —  Loss     : 0.4366
+Round 39 —  Loss     : 0.4056
+Round 40 —  Loss     : 0.3856
+
