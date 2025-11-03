@@ -187,7 +187,7 @@ def evaluate(self, parameters, config):
 ### Installation Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/[username]/CollabIDS.git
+   git clone https://github.com/malek0501/CollabIDS.git
    cd CollabIDS
    ```
 
